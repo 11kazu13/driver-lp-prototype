@@ -29,7 +29,9 @@ export const Step7_Entry = () => {
     if (validate()) {
       // Simulate API call
       console.log('Submitting:', formData);
-      navigate('/thanks');
+      setTimeout(() => {
+        navigate('/thanks');
+      }, 300);
     }
   };
 

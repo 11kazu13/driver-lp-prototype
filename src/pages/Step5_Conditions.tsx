@@ -56,7 +56,9 @@ export const Step5_Conditions = () => {
   const handleNext = () => {
     // Set Job Count to "???" (null) for transition
     setJobCount(null);
-    navigate('/step6');
+    setTimeout(() => {
+      navigate('/step6');
+    }, 300);
   };
 
   return (

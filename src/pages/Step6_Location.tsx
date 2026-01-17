@@ -102,7 +102,9 @@ export const Step6_Location = () => {
     // 最終的な求人数を設定
     setJobCount(3216);
     // 次のステップへ遷移
-    navigate('/step7');
+    setTimeout(() => {
+      navigate('/step7');
+    }, 300);
   };
 
   // -------------------------------------------------------------------

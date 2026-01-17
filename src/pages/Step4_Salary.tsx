@@ -1,3 +1,5 @@
+// 希望年収を聞き、今の就業状況を聞く
+
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormStore } from '../hooks/useFormStore';
@@ -11,10 +13,12 @@ export const Step4_Salary = () => {
   const { formData, setFormData, setJobCount } = useFormStore();
   const [step, setStep] = useState<'salary' | 'status'>('salary');
 
+  // Q5の表示位置へスクロールするための参照
   const statusRef = useRef<HTMLDivElement>(null);
 
   const handleSalarySelect = (value: string) => {
     setFormData('salary', value);
+    // Q4の回答後にQ5を表示する
     setStep('status');
     setTimeout(() => {
       statusRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -23,13 +27,17 @@ export const Step4_Salary = () => {
 
   const handleStatusSelect = (value: string) => {
     setFormData('status', value);
+    // 回答が終わったら次のページへ
     setJobCount(4200);
-    navigate('/step5');
+    setTimeout(() => {
+      navigate('/step5');
+    }, 300);
   };
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
 
+      {/* Q4: 希望年収を選ぶ */}
       <div className="space-y-4">
         <div className="text-center space-y-2">
           <h2 className="text-xl font-bold text-primary">
@@ -51,6 +59,7 @@ export const Step4_Salary = () => {
         </div>
       </div>
 
+      {/* Q4に答えたら、Q5（現在の状況）を表示する */}
       {step === 'status' && (
         <div ref={statusRef} className="space-y-4 pt-8 border-t border-gray-100 animate-in fade-in slide-in-from-bottom-8 duration-500">
           <div className="text-center space-y-2">
