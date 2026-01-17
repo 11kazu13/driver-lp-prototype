@@ -1,7 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+// 最初の質問画面
+
+import { useNavigate } from 'react-router-dom'; // ページをプログラムで移動するためのフック
 import { useFormStore } from '../hooks/useFormStore';
-import { motion } from 'framer-motion';
-import { Search, Zap } from 'lucide-react';
+import { motion } from 'framer-motion'; // 「押したときに少し縮む」アニメーション
+import { Search, Zap } from 'lucide-react'; // アイコン用ライブラリ
 
 export const Step1_Motivation = () => {
   const navigate = useNavigate();
@@ -10,10 +12,10 @@ export const Step1_Motivation = () => {
   const handleSelect = (status: 'passive' | 'active') => {
     setFormData('seekingStatus', status);
 
-    // Slight decrement and auto-advance
+    // 求人数を少し減らして「絞り込みが進んだ」感じを出す
     setJobCount(5390);
 
-    // Smooth transition
+    // 少し待ってから次のページへ移動する
     setTimeout(() => {
       navigate('/step2');
     }, 300);
@@ -29,7 +31,7 @@ export const Step1_Motivation = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-4">
-        {/* Passive Option */}
+        {/* 「情報収集寄り」な選択肢 */}
         <motion.button
           whileTap={{ scale: 0.98 }}
           onClick={() => handleSelect('passive')}
@@ -45,7 +47,7 @@ export const Step1_Motivation = () => {
           </div>
         </motion.button>
 
-        {/* Active Option */}
+        {/* 「今すぐ転職したい」選択肢 */}
         <motion.button
           whileTap={{ scale: 0.98 }}
           onClick={() => handleSelect('active')}

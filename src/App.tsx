@@ -1,3 +1,5 @@
+// スマホ向けのウィザードをルーティングで制御する設計図
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MobileLayout } from './layouts/MobileLayout';
 import { Step1_Motivation } from './pages/Step1_Motivation';
@@ -13,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MobileLayout />}>
+        <Route path="/" element={<MobileLayout />}> {/* 親ルートと共通レイアウト */}
           <Route index element={<Step1_Motivation />} />
           <Route path="step2" element={<Step2_License />} />
           <Route path="step3" element={<Step3_WorkStyle />} />

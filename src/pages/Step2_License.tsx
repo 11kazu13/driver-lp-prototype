@@ -1,3 +1,5 @@
+// 持ってる免許を複数選択させるステップ
+
 import { useNavigate } from 'react-router-dom';
 import { useFormStore } from '../hooks/useFormStore';
 import { Button } from '../components/ui/Button';
@@ -22,7 +24,7 @@ export const Step2_License = () => {
     const current = formData.licenses;
     const isSelected = current.includes(license);
 
-    // Toggle logic
+    // すでに選ばれていれば外す、なければ追加する
     const nextLicenses = isSelected
       ? current.filter(l => l !== license)
       : [...current, license];
@@ -31,9 +33,11 @@ export const Step2_License = () => {
   };
 
   const handleNext = () => {
-    // Decrease Job Count for next step
+    // 次のステップに進む前に求人数を少し減らす
     setJobCount(5120);
-    navigate('/step3');
+    setTimeout(() => {
+      navigate('/step3');
+    }, 300);
   };
 
   return (
