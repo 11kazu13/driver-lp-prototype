@@ -25,57 +25,59 @@ export const JobCounter = () => {
   }, [jobCount, spring]);
 
   return (
-    <div className="bg-white pb-2 pt-2 px-4 sticky top-0 z-40 shadow-sm border-b border-gray-100">
-      <motion.div
-        initial={{ scale: 0.98, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="relative overflow-hidden bg-orange-50/50 border border-orange-300 border-dashed rounded-xl p-3 shadow-sm flex flex-col items-center justify-center transition-colors duration-500"
-      >
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-white/40 pointer-events-none" />
+    <div className="sticky top-0 z-40 px-4 pt-4 pb-0 bg-slate-50/95 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-sm p-1">
+        <motion.div
+          initial={{ scale: 0.98, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative overflow-hidden bg-orange-50/50 border border-orange-200 border-dashed rounded-lg p-3 flex flex-col items-center justify-center transition-colors duration-500"
+        >
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-white/40 pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col items-center gap-1">
-          {/* Dynamic Label / Badge */}
-          {!hasStarted ? (
-            <div className="flex items-center gap-1.5 bg-orange-100/80 px-3 py-0.5 rounded-full border border-orange-200">
-              <CheckCircle2 size={12} className="text-orange-600" />
-              <span className="text-[10px] font-bold text-orange-700 tracking-wide">
-                非公開・好条件求人を含む
-              </span>
-            </div>
-          ) : (
-            <div className="h-[22px]" /> // Spacer to keep layout stable if badge disappears, or could replace with "Filtering..."
-          )}
-
-          {/* Main Text & Number */}
-          <div className="flex flex-col items-center">
-            <span className="text-xs font-medium text-gray-500 mb-0.5">
-              {hasStarted ? 'あなたの条件にマッチする求人' : '現在ご紹介可能な求人'}
-            </span>
-
-            <div className="flex items-baseline gap-2">
-              {/* Start Icon */}
-              {hasStarted && <Search className="text-orange-400 w-4 h-4" />}
-
-              <div className="flex items-baseline">
-                {jobCount === null ? (
-                  <span className="text-3xl font-extrabold text-orange-500 tracking-wider animate-pulse">
-                    ???
-                  </span>
-                ) : (
-                  <motion.span className="text-4xl font-extrabold text-orange-600 tracking-tight tabular-nums drop-shadow-sm">
-                    {display}
-                  </motion.span>
-                )}
-                <span className="text-sm font-bold text-orange-500 ml-1">件</span>
+          <div className="relative z-10 flex flex-col items-center gap-1">
+            {/* Dynamic Label / Badge */}
+            {!hasStarted ? (
+              <div className="flex items-center gap-1.5 bg-orange-100/80 px-3 py-0.5 rounded-full border border-orange-200">
+                <CheckCircle2 size={12} className="text-orange-600" />
+                <span className="text-[10px] font-bold text-orange-700 tracking-wide">
+                  非公開・好条件求人を含む
+                </span>
               </div>
+            ) : (
+              <div className="h-[22px]" /> // Spacer
+            )}
 
-              {/* End Icon */}
-              {!hasStarted && <Sparkles className="text-orange-400 w-4 h-4 animate-pulse" />}
+            {/* Main Text & Number */}
+            <div className="flex flex-col items-center">
+              <span className="text-xs font-medium text-gray-500 mb-0.5">
+                {hasStarted ? 'あなたの条件にマッチする求人' : '現在ご紹介可能な求人'}
+              </span>
+
+              <div className="flex items-baseline gap-2">
+                {/* Start Icon */}
+                {hasStarted && <Search className="text-orange-400 w-4 h-4" />}
+
+                <div className="flex items-baseline">
+                  {jobCount === null ? (
+                    <span className="text-3xl font-extrabold text-orange-500 tracking-wider animate-pulse">
+                      ???
+                    </span>
+                  ) : (
+                    <motion.span className="text-4xl font-extrabold text-orange-600 tracking-tight tabular-nums drop-shadow-sm">
+                      {display}
+                    </motion.span>
+                  )}
+                  <span className="text-sm font-bold text-orange-500 ml-1">件</span>
+                </div>
+
+                {/* End Icon */}
+                {!hasStarted && <Sparkles className="text-orange-400 w-4 h-4 animate-pulse" />}
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };

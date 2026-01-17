@@ -33,13 +33,15 @@ export const Step1_Motivation = () => {
         <motion.button
           whileTap={{ scale: 0.98 }}
           onClick={() => handleSelect('passive')}
-          className="bg-white border-2 border-slate-100 p-6 rounded-xl shadow-sm hover:border-slate-300 hover:shadow-md transition-all group text-left flex items-center gap-4"
+          className="relative overflow-hidden bg-gradient-to-b from-emerald-500 to-emerald-700 p-6 rounded-xl shadow-lg border-t border-white/30 hover:shadow-xl transition-all group text-left flex items-center gap-4"
         >
-          <div className="bg-slate-100 p-3 rounded-full text-slate-500 group-hover:bg-slate-200 transition-colors">
+          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+          <div className="bg-white/20 p-3 rounded-full text-white backdrop-blur-sm">
             <Search size={24} strokeWidth={2.5} />
           </div>
-          <div>
-            <span className="block text-lg font-bold text-slate-700">良い求人があれば<br />検討したい</span>
+          <div className="relative z-10">
+            <span className="block text-lg font-bold text-white text-shadow-sm">良い求人があれば<br />検討したい</span>
           </div>
         </motion.button>
 
@@ -47,13 +49,15 @@ export const Step1_Motivation = () => {
         <motion.button
           whileTap={{ scale: 0.98 }}
           onClick={() => handleSelect('active')}
-          className="bg-white border-2 border-brand/10 p-6 rounded-xl shadow-sm hover:border-brand/30 hover:shadow-md transition-all group text-left flex items-center gap-4"
+          className="relative overflow-hidden bg-gradient-to-b from-orange-400 to-orange-600 p-6 rounded-xl shadow-lg border-t border-white/30 hover:shadow-xl transition-all group text-left flex items-center gap-4"
         >
-          <div className="bg-brand/10 p-3 rounded-full text-brand group-hover:bg-brand/20 transition-colors">
+          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+          <div className="bg-white/20 p-3 rounded-full text-white backdrop-blur-sm">
             <Zap size={24} strokeWidth={2.5} />
           </div>
-          <div>
-            <span className="block text-lg font-bold text-brand">なるべく早く<br />働きたい</span>
+          <div className="relative z-10">
+            <span className="block text-lg font-bold text-white text-shadow-sm">なるべく早く<br />働きたい</span>
           </div>
         </motion.button>
       </div>

@@ -1,6 +1,6 @@
 export const Header = () => {
   return (
-    <header className="bg-brand pt-3 pb-3 px-4 shadow-sm">
+    <header className="bg-primary pt-3 pb-3 px-4 shadow-md z-50 relative">
       <div className="flex flex-col items-center justify-center space-y-1">
         {/* Logo */}
         <h1 className="font-bold text-2xl tracking-tighter text-white leading-none">

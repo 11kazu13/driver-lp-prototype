@@ -7,11 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#001F3D', // Navy Blue - Main
-        brand: '#2557a7', // Indeed Blue
+        primary: '#15803d', // Deep Green (Brand)
+        brand: '#15803d', // Mapping brand to primary for compatibility
         accent: {
-          DEFAULT: '#ED985F', // Orange - Accent Strong
-          light: '#F7B980', // Light Orange - Accent Weak
+          DEFAULT: '#f97316', // Vivid Orange
+          light: '#fdba74', // Lighter Orange
         },
         base: '#E6E6E6', // Light Gray - Base
       },
