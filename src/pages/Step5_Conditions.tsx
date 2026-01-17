@@ -21,14 +21,12 @@ export const Step5_Conditions = () => {
   const { formData, setFormData, setJobCount } = useFormStore();
   const [showToast, setShowToast] = useState(false);
 
-  // Check URL or store state to know "previous" count foundation.
-  // For simplicity, we assume entering Step 5 has a base count (e.g. from previous steps). 
-  // Let's assume a conceptual base count for this step is ~4200.
+  // Step5に入った時点の「基準求人数」を仮で置いている（実際は前のステップの結果）
   useEffect(() => {
-    // Determine base count. Ideally this comes from store/history, but here we mock it.
+    // 求人数は選択した数だけ減らすイメージ
     const BASE_COUNT = 4200;
-    const REDUCTION_PER_ITEM = 185; // How much count drops per selection
-    const MIN_COUNT = 1560; // Floor
+    const REDUCTION_PER_ITEM = 185; // 1つ選ぶごとに減る数
+    const MIN_COUNT = 1560; // これ以下にはしない
 
     const reduction = formData.conditions.length * REDUCTION_PER_ITEM;
     const nextCount = Math.max(MIN_COUNT, BASE_COUNT - reduction);
@@ -40,6 +38,7 @@ export const Step5_Conditions = () => {
     const current = formData.conditions;
     const isSelected = current.includes(value);
 
+    // すでに選ばれていれば外す、なければ追加する
     const next = isSelected
       ? current.filter(l => l !== value)
       : [...current, value];
@@ -47,14 +46,14 @@ export const Step5_Conditions = () => {
     setFormData('conditions', next);
 
     if (!isSelected) {
-      // Show positive feedback
+      // 選んだときだけ応援メッセージを一時表示する
       setShowToast(true);
       setTimeout(() => setShowToast(false), 2000);
     }
   };
 
   const handleNext = () => {
-    // Set Job Count to "???" (null) for transition
+    // 遷移中は「???」表示にするため、求人数を一旦nullにする
     setJobCount(null);
     setTimeout(() => {
       navigate('/step6');
@@ -95,6 +94,7 @@ export const Step5_Conditions = () => {
         </Button>
       </div>
 
+      {/* 条件を選んだときの「安心させる」通知 */}
       <AnimatePresence>
         {showToast && (
           <motion.div
