@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { JobCounter } from '../components/features/JobCounter';
 import { Header } from '../components/layouts/Header';
+import { ProgressBar } from '../components/ui/ProgressBar';
 
 import bgImage from '../assets/bg-driver.png';
 
@@ -18,8 +19,12 @@ export const MobileLayout = () => {
         {/* Header */}
         <Header />
 
-        {/* Sticky Job Counter (Hide on Thanks page) */}
-        {location.pathname !== '/thanks' && <JobCounter />}
+        {/* Sticky Header Group (Progress + JobCounter) */}
+        <div className="sticky top-0 z-40 bg-slate-900/20 backdrop-blur-[2px] pb-1">
+          <ProgressBar />
+          {/* Conditional Job Counter */}
+          {location.pathname !== '/thanks' && <JobCounter />}
+        </div>
 
         {/* Main Content */}
         <main className="flex-1 px-4 pb-24 pt-4">

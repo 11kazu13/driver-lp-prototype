@@ -25,7 +25,7 @@ export const JobCounter = () => {
   }, [jobCount, spring]);
 
   return (
-    <div className="sticky top-0 z-40 px-4 pt-4 pb-0">
+    <div className="px-4 pt-3 pb-1">
       <div className="bg-white rounded-xl shadow-xl p-1 relative z-20">
         <motion.div
           initial={{ scale: 0.98, opacity: 0 }}

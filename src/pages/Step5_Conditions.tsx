@@ -81,10 +81,10 @@ export const Step5_Conditions = () => {
       <AnimatePresence>
         {showToast && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-full shadow-2xl z-50 whitespace-nowrap text-sm font-bold flex items-center gap-2"
+            initial={{ opacity: 0, y: 50, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: 20, x: "-50%" }}
+            className="absolute bottom-24 left-1/2 bg-green-600 text-white px-6 py-3 rounded-full shadow-2xl z-50 whitespace-nowrap text-sm font-bold flex items-center gap-2 w-max"
           >
             <span>✨</span> その条件で歓迎の企業があります！
           </motion.div>
