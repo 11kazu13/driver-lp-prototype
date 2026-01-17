@@ -3,6 +3,7 @@ import { JobCounter } from '../components/features/JobCounter';
 import { Header } from '../components/layouts/Header';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { AiHelpButton } from '../components/ui/AiHelpButton';
+import { SocialProofNotification } from '../components/ui/SocialProofNotification';
 
 import bgImage from '../assets/bg-driver.png';
 
@@ -43,6 +44,9 @@ export const MobileLayout = () => {
 
       {/* AI Help Floating Button */}
       <AiHelpButton />
+
+      {/* Social Proof Notification */}
+      <SocialProofNotification />
     </div>
   );
 };
