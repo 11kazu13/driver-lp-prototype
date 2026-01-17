@@ -25,12 +25,12 @@ export const JobCounter = () => {
   }, [jobCount, spring]);
 
   return (
-    <div className="sticky top-0 z-40 px-4 pt-4 pb-0 bg-slate-50/95 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-sm p-1">
+    <div className="sticky top-0 z-40 px-4 pt-4 pb-0">
+      <div className="bg-white rounded-xl shadow-xl p-1 relative z-20">
         <motion.div
           initial={{ scale: 0.98, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="relative overflow-hidden bg-orange-50/50 border border-orange-200 border-dashed rounded-lg p-3 flex flex-col items-center justify-center transition-colors duration-500"
+          className="relative overflow-hidden bg-white border border-orange-200 border-dashed rounded-lg p-3 flex flex-col items-center justify-center transition-colors duration-500"
         >
           {/* Background decoration */}
           <div className="absolute inset-0 bg-white/40 pointer-events-none" />

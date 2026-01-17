@@ -1,10 +1,11 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { JobCounter } from '../components/features/JobCounter';
 import { Header } from '../components/layouts/Header';
 
 import bgImage from '../assets/bg-driver.png';
 
 export const MobileLayout = () => {
+  const location = useLocation();
   return (
     <div className="min-h-screen bg-slate-900 flex justify-center font-sans text-slate-800 relative">
       {/* Background Image & Overlay */}
@@ -17,18 +18,18 @@ export const MobileLayout = () => {
         {/* Header */}
         <Header />
 
-        {/* Sticky Job Counter */}
-        <JobCounter />
+        {/* Sticky Job Counter (Hide on Thanks page) */}
+        {location.pathname !== '/thanks' && <JobCounter />}
 
         {/* Main Content */}
         <main className="flex-1 px-4 pb-24 pt-4">
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white rounded-xl shadow-xl p-6 relative z-10">
             <Outlet />
           </div>
         </main>
 
         {/* Footer */}
-        <footer className="bg-slate-50 py-8 text-center text-[10px] text-gray-400 border-t border-slate-200 space-y-2">
+        <footer className="bg-white py-8 text-center text-[10px] text-gray-400 border-t border-gray-100 space-y-2 relative z-10 shadow-t-xl">
           <p>厚生労働大臣許可 13-ユ-309652</p>
           <p>Copyright 2026 © PLEX Inc.</p>
         </footer>
