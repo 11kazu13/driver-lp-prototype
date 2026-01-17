@@ -4,7 +4,7 @@ export const Header = () => {
       <div className="flex flex-col items-center justify-center space-y-1">
         {/* Logo */}
         <h1 className="font-bold text-2xl tracking-tighter text-white leading-none">
-          PLEX JOB
+          KAZU JOB
         </h1>
 
         {/* Subtext */}

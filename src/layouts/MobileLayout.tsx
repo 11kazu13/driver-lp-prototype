@@ -37,8 +37,8 @@ export const MobileLayout = () => {
 
         {/* Footer */}
         <footer className="bg-white py-8 text-center text-[10px] text-gray-400 border-t border-gray-100 space-y-2 relative z-10 shadow-t-xl">
-          <p>厚生労働大臣許可 13-ユ-309652</p>
-          <p>Copyright 2026 © PLEX Inc.</p>
+          <p>厚生労働大臣許可 XX-ユ-XXXXXX（サンプル）</p>
+          <p>Copyright 2026 © KAZU inc.</p>
         </footer>
       </div>
 
