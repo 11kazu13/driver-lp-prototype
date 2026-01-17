@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFormStore } from '../hooks/useFormStore';
 import { Button } from '../components/ui/Button';
 import { CheckboxCard } from '../components/ui/CheckboxCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const CONDITIONS = [
@@ -20,6 +20,21 @@ export const Step5_Conditions = () => {
   const navigate = useNavigate();
   const { formData, setFormData, setJobCount } = useFormStore();
   const [showToast, setShowToast] = useState(false);
+
+  // Check URL or store state to know "previous" count foundation.
+  // For simplicity, we assume entering Step 5 has a base count (e.g. from previous steps). 
+  // Let's assume a conceptual base count for this step is ~4200.
+  useEffect(() => {
+    // Determine base count. Ideally this comes from store/history, but here we mock it.
+    const BASE_COUNT = 4200;
+    const REDUCTION_PER_ITEM = 185; // How much count drops per selection
+    const MIN_COUNT = 1560; // Floor
+
+    const reduction = formData.conditions.length * REDUCTION_PER_ITEM;
+    const nextCount = Math.max(MIN_COUNT, BASE_COUNT - reduction);
+
+    setJobCount(nextCount);
+  }, [formData.conditions, setJobCount]);
 
   const toggleCondition = (value: string) => {
     const current = formData.conditions;
@@ -39,7 +54,7 @@ export const Step5_Conditions = () => {
   };
 
   const handleNext = () => {
-    // Set Job Count to "???" (null)
+    // Set Job Count to "???" (null) for transition
     setJobCount(null);
     navigate('/step6');
   };
