@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { JobCounter } from '../components/features/JobCounter';
 import { Header } from '../components/layouts/Header';
 import { ProgressBar } from '../components/ui/ProgressBar';
+import { AiHelpButton } from '../components/ui/AiHelpButton';
 
 import bgImage from '../assets/bg-driver.png';
 
@@ -39,6 +40,9 @@ export const MobileLayout = () => {
           <p>Copyright 2026 © PLEX Inc.</p>
         </footer>
       </div>
+
+      {/* AI Help Floating Button */}
+      <AiHelpButton />
     </div>
   );
 };
