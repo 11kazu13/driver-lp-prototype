@@ -8,15 +8,13 @@ export const Step7_Entry = () => {
   const { formData, setFormData } = useFormStore();
   const [errors, setErrors] = useState<{ name?: string, phone?: string }>({});
 
+  // 入力チェック（名前と電話番号）
   const validate = () => {
     const newErrors: typeof errors = {};
     if (!formData.name) newErrors.name = 'お名前を入力してください';
 
-    // Simple regex for 090-0000-0000 etc. or just numeric
-    // Requirement says "090-0000-0000 format validation"
-    // I'll support both hyphenated and non-hyphenated for UX, but correct it?
-    // User said "090-0000-0000形式". I'll validate that format strictly or loosely.
-    // Let's validate strictly 0\d{1,4}-\d{1,4}-\d{4}
+    // 090-1234-5678のような「ハイフン付き」だけOKにする
+    // \d は数字、{2,4} は2〜4桁の意味
     if (!/^\d{2,4}-\d{2,4}-\d{4}$/.test(formData.phone)) {
       newErrors.phone = '電話番号をハイフン付きで入力してください';
     }
@@ -27,7 +25,7 @@ export const Step7_Entry = () => {
 
   const handleSubmit = () => {
     if (validate()) {
-      // Simulate API call
+      // 送信処理の代わりにconsoleに出している（本来はAPIに送る）
       console.log('Submitting:', formData);
       setTimeout(() => {
         navigate('/thanks');
@@ -47,7 +45,7 @@ export const Step7_Entry = () => {
       </div>
 
       <div className="space-y-6">
-        {/* Q9 Name */}
+        {/* Q9: お名前 */}
         <div className="space-y-2">
           <label className="text-sm font-bold text-gray-700">お名前</label>
           <input
@@ -60,7 +58,7 @@ export const Step7_Entry = () => {
           {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
         </div>
 
-        {/* Q10 Phone */}
+        {/* Q10: 電話番号 */}
         <div className="space-y-2">
           <label className="text-sm font-bold text-gray-700">電話番号</label>
           <input
